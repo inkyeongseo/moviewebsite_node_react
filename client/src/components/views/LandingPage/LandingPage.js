@@ -18,6 +18,8 @@ function LandingPage() {
         .then(response => response.json())
         .then(response => {
 
+
+            console.log(response)
             setMovies([response.results])
             setMainMoiveImage(response.results[0])
         })
