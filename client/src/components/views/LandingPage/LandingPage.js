@@ -2,6 +2,8 @@ import React,{useEffect, useState} from 'react'
 import { FaCode } from "react-icons/fa";
 import {API_URL, API_KEY, IMAGE_BASE_URL} from '../../Config'
 import MainImage from './Sections/MainImage'
+import GridCards from '../commons/GridCards';
+import {Row} from 'antd'
 
 
 function LandingPage() {
@@ -19,7 +21,7 @@ function LandingPage() {
         .then(response => {
 
 
-            console.log(response)
+            console.log(response.results)
             setMovies([response.results])
             setMainMoiveImage(response.results[0])
         })
@@ -41,6 +43,23 @@ function LandingPage() {
                 <h2>Movie by latest</h2>
                 <hr />
                 {/* Movie Grid Cards */}
+                
+                <Row>
+
+
+                {Movies && Movies.map((movie, index) => (
+                        <React.Fragment key={index}>
+                            <GridCards
+                                landingPage
+                                image={movie.poster_path ?
+                                    `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}//위와동일
+                                menuId={movie.id}//위와동일
+                                menuName={movie.original_title}//위와동일
+                            />
+                        </React.Fragment>
+                    ))}
+                </Row>
+
             </div>
 
             <div style={{display: 'flex', justifyContent: 'center'}}>
