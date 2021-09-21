@@ -22,7 +22,7 @@ function LandingPage() {
 
 
             console.log(response.results)
-            setMovies([response.results])
+            setMovies(...[response.results])
             setMainMoiveImage(response.results[0])
         })
 
@@ -44,7 +44,7 @@ function LandingPage() {
                 <hr />
                 {/* Movie Grid Cards */}
                 
-                <Row>
+                <Row gutter={[16,16]}>
 
 
                 {Movies && Movies.map((movie, index) => (
