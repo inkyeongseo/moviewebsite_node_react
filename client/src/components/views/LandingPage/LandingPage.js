@@ -22,6 +22,7 @@ function LandingPage() {
     }, [])
 
     const fetchMovies =(endPoint)=>{
+        //반복되는 작업 함수로 만들기
         fetch(endPoint)
         .then(response => response.json())
         .then(response => {
@@ -36,7 +37,7 @@ function LandingPage() {
 
     const loadMoreItems =()=>{
 
-        const endPoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage+1}`;
+        const endPoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage+1}`; // 다음페이지 가져오기
         
         fetchMovies(endPoint)
 
