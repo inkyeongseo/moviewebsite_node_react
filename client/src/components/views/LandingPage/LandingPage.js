@@ -26,10 +26,10 @@ function LandingPage() {
         .then(response => response.json())
         .then(response => {
 
-
+            console.log(response)
             console.log(response.results)
             setMovies([...Movies, ...response.results])
-            setMainMoiveImage(response.results[0])
+            setMainMoiveImage(response.results[0]) //제일 인기있는 영화
             setCurrentPage(response.page)
         })
     }
@@ -62,13 +62,14 @@ function LandingPage() {
 
 
                 {Movies && Movies.map((movie, index) => (
+                //↑영화가 있다면 가져오기   
                         <React.Fragment key={index}>
                             <GridCards
                                 landingPage
                                 image={movie.poster_path ?
-                                    `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}//위와동일
-                                menuId={movie.id}//위와동일
-                                menuName={movie.original_title}//위와동일
+                                    `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
+                                menuId={movie.id}
+                                menuName={movie.original_title}
                             />
                         </React.Fragment>
                     ))}
